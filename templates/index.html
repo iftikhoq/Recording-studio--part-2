@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <h1 class="text-center mb-4">Musicians</h1>
+  <div class="ms-5 me-5">
+  <table class="table table-success table-striped-columns">
+      <thead>
+          <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Instrument Type</th>
+          </tr>
+      </thead>
+  
+  {% if mdata %}
+      {% for musician in mdata %}
+      <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ musician.first_name }} {{ musician.last_name }}</a></td>
+          <td>{{ musician.email }}</td>
+          <td>{{ musician.instrument_type }}</td> 
+      </tr>
+      {% endfor %}
+  {% endif %}
+      </table>
+  </div>
+  
+  
+  
+  <h1 class="text-center mb-4">Albums</h1>
+  <div class="ms-5 me-5">
+  <table class="table table-success table-striped-columns">
+      <thead>
+          <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Album rating</th>
+              <th>Instrument Type</th>
+              <th>Album name</th>
+              <th>Release date</th>
+          </tr>
+      </thead>
+  
+  {% if mdata %}
+      {% for album in adata %}
+      <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ album.musician.first_name }} {{ album.musician.last_name }}</td>
+          <td>{{ album.musician.email }}</td>
+          <td>{{ album.rating }}</td>
+          <td>{{ album.musician.instrument_type }}</td> 
+          <td>{{ album.name }}</td> 
+          <td>{{ album.release_date }}</td> 
+      </tr>
+      {% endfor %}
+  {% endif %}
+      </table>
+  </div>
+      
+  </div>
+{% endblock %}
